@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Source validator · MIDNIGHT FREQUENCY</title>
+<style>
+  :root { color-scheme: dark; font: 15px system-ui,sans-serif; background: #07152d; color: #f8fcff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 32px; max-width: 1500px; margin-inline: auto; }
+  h1 { font-size: clamp(28px,4vw,52px); letter-spacing: -.04em; margin: 8px 0; }
+  .eyebrow { color: #48ddf5; letter-spacing: .16em; font-size: 12px; }
+  p { max-width: 900px; line-height: 1.6; color: #b8cedf; }
+  a { color: #48ddf5; } input, button { font: inherit; border: 1px solid #426080; background: #0a2447; color: white; padding: 10px; border-radius: 0; }
+  button { cursor: pointer; } button:hover { border-color: #48ddf5; }
+  :focus-visible { outline: 2px solid #48ddf5; outline-offset: 3px; }
+  .toolbar { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0; }
+  #search { flex: 1; min-width: 230px; }
+  #export { background: #48ddf5; color: #07152d; font-weight: 700; }
+  article { display: grid; grid-template-columns: minmax(220px,1fr) minmax(260px,1fr); gap: 20px; padding: 20px 0; border-top: 1px solid #24476e; }
+  article[hidden] { display: none; } h2 { font-size: 18px; margin: 0 0 6px; }
+  small { color: #91b3ce; } label { display: block; margin-top: 10px; font-size: 13px; }
+  input[type=text] { width: 100%; margin-top: 5px; } input[type=checkbox] { accent-color: #48ddf5; }
+  .edit { margin-top: 10px; } .metadata { font-size: 13px; } .status { color: #48ddf5; margin-top: 12px; font-size: 12px; }
+  [role=status] { min-height: 1.5em; color: #a9f5ff; }
+  @media(max-width:650px) { body { padding:20px; } article { grid-template-columns:1fr; gap:10px; } }
+</style>
+<p class="eyebrow">MIDNIGHT FREQUENCY / DEVELOPMENT TOOLS</p>
+<h1>Source validator</h1>
+<p>Compare each exact recording with its canonical title and version before confirming a replacement. Existing metadata checks are shown for reference; they do not guarantee regional playback. Exported overrides must be saved as <code>public/source-overrides.json</code>.</p>
+<a href="/">← Return to the experience</a>
+<div class="toolbar"><input id="search" type="search" aria-label="Search canonical tracks" placeholder="Title, artist, collection or ID"><button id="export">Export confirmed overrides</button></div>
+<p id="status" role="status"></p>
+<main id="catalogue"></main>
+<script type="module" src="/src/dev/source-validator.ts"></script>
+</html>

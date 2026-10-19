@@ -1,0 +1,84 @@
+/* MIDNIGHT FREQUENCY — design tokens. Mirrors PALETTE in src/config/config.ts. */
+:root {
+  /* Palette */
+  --ink: #050b1a;
+  --midnight: #07152d;
+  --deep-blue: #092b65;
+  --persona-blue: #0869d8;
+  --electric-blue: #219cff;
+  --cyan: #48ddf5;
+  --ice: #a9f5ff;
+  --white: #f8fcff;
+  --silver: #b8cedf;
+  --muted-blue: #668eb8;
+
+  /* Per-mode accent (overridden by [data-mode]) */
+  --accent: var(--cyan);
+  --accent-soft: rgb(72 221 245 / 0.18);
+  --panel: rgb(5 11 26 / 0.86);
+  --panel-solid: #06122a;
+  --line: rgb(169 245 255 / 0.28);
+  --line-strong: rgb(169 245 255 / 0.6);
+  --text: var(--white);
+  --text-dim: rgb(248 252 255 / 0.66);
+  --text-faint: rgb(248 252 255 / 0.42);
+
+  /* Typography */
+  --font-display: 'Rajdhani', 'Noto Sans JP', system-ui, sans-serif;
+  --font-logo: 'Michroma', 'Rajdhani', system-ui, sans-serif;
+  --font-ui: 'Space Grotesk', 'Noto Sans JP', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'DotGothic16', ui-monospace, monospace;
+  --font-lcd: 'DotGothic16', 'IBM Plex Mono', monospace;
+  --font-jp: 'Noto Sans JP', 'Space Grotesk', sans-serif;
+
+  --fs-micro: clamp(0.62rem, 0.58rem + 0.15vw, 0.72rem);
+  --fs-small: clamp(0.72rem, 0.68rem + 0.2vw, 0.84rem);
+  --fs-body: clamp(0.86rem, 0.8rem + 0.25vw, 1rem);
+  --fs-label: clamp(0.95rem, 0.86rem + 0.4vw, 1.15rem);
+  --fs-title-s: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
+  --fs-title-m: clamp(2rem, 1.3rem + 2.4vw, 3.6rem);
+  --fs-title-l: clamp(2.4rem, 1.4rem + 3.4vw, 4.8rem);
+  --fs-mega: clamp(4rem, 2rem + 8vw, 11rem);
+
+  /* Geometry */
+  --gutter: clamp(16px, 2.2vw, 40px);
+  --cut: 14px; /* chamfer size for clipped panels */
+  --skew: -12deg;
+  --hit: 44px; /* minimum touch target */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  /* Motion — distinct easings by intent */
+  --ease-float: cubic-bezier(0.37, 0, 0.63, 1); /* calm, sinusoidal */
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.1, 1); /* energetic entrances */
+  --ease-exit: cubic-bezier(0.6, 0, 0.9, 0.3); /* quick exits */
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1); /* button rebound */
+  --ease-panel: cubic-bezier(0.16, 1, 0.3, 1); /* panel slides */
+  --dur-fast: 140ms;
+  --dur-mid: 320ms;
+  --dur-slow: 700ms;
+
+  color-scheme: dark;
+}
+
+:root[data-mode='darkhour'] {
+  --accent: #7fe8ff;
+  --accent-soft: rgb(127 232 255 / 0.16);
+  --panel: rgb(1 5 16 / 0.9);
+  --panel-solid: #020812;
+}
+
+:root[data-mode='bluememory'] {
+  --accent: var(--ice);
+  --accent-soft: rgb(169 245 255 / 0.22);
+  --panel: rgb(6 36 94 / 0.82);
+  --panel-solid: #072a6b;
+}
+
+:root[data-motion='reduced'] {
+  --dur-fast: 0ms;
+  --dur-mid: 0ms;
+  --dur-slow: 0ms;
+}

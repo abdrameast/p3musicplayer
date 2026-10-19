@@ -1,0 +1,30 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { min-width: 320px; min-height: 100%; background: var(--ink); }
+body { margin: 0; color: var(--text); font-family: var(--font-ui); font-size: var(--fs-body); -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; color: inherit; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
+button { border: 0; border-radius: 0; background: none; padding: 0; cursor: pointer; }
+button:disabled, input:disabled { cursor: not-allowed; }
+button:disabled { opacity: .42; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ol, ul, dl, dd { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+svg { display: block; }
+button svg, a svg { flex-shrink: 0; }
+button, input, a { touch-action: manipulation; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--ice); outline-offset: 5px; }
+::selection { background: var(--cyan); color: var(--ink); }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-thumb { background: var(--muted-blue); }
+::-webkit-scrollbar-track { background: var(--ink); }
+.mf-sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.mf-icon { width: 20px; height: 20px; }
+.mf-micro { font: 400 var(--fs-micro)/1.5 var(--font-mono); letter-spacing: .12em; color: var(--text-dim); }
+.mf-textbtn { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px; border: 1px solid var(--line); font: 500 11px/1.5 var(--font-mono); letter-spacing: .06em; color: var(--accent); }
+.mf-textbtn:hover { background: var(--accent-soft); border-color: var(--accent); }
+.mf-textbtn--block { width: 100%; justify-content: center; }
+.mf-textbtn svg { width: 15px; height: 15px; }
+.fatal { min-height: 100svh; display: grid; align-content: center; gap: 20px; padding: 12vw; }
+.fatal__title { font: 700 clamp(3rem,8vw,8rem)/1 var(--font-display); color: var(--accent); }
+.fatal__text { color: var(--text-dim); }

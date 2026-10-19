@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIDNIGHT FREQUENCY · Responsive verification</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #17202d; color: white; font: 14px system-ui; }
+  nav { min-height: 64px; padding: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  button, a { color: white; background: #273b56; border: 1px solid #567596; padding: 8px 10px; cursor: pointer; }
+  button[aria-pressed=true] { color: #07152d; background: #48ddf5; }
+  #stage { position: relative; margin: 0 auto; overflow: hidden; }
+  iframe { border: 0; transform-origin: top left; display: block; background: #07152d; }
+  output { margin-left: auto; }
+</style>
+<nav aria-label="Viewport checks">
+  <button data-size="360,640">360 × 640</button>
+  <button data-size="390,844">390 × 844</button>
+  <button data-size="768,1024">768 × 1024</button>
+  <button data-size="1280,720">1280 × 720</button>
+  <button data-size="1440,900">1440 × 900</button>
+  <button data-size="1920,1080">1920 × 1080</button>
+  <button data-size="2560,1080">2560 × 1080</button>
+  <button id="fallback" aria-pressed="false">2D fallback</button>
+  <output id="result"></output>
+</nav>
+<div id="stage"><iframe id="preview" title="MIDNIGHT FREQUENCY responsive preview" src="/"></iframe></div>
+<script>
+  const frame = document.querySelector('iframe');
+  let width = 1440, height = 900;
+  function layout() {
+    const scale = Math.min(1, (innerWidth - 24) / width, (innerHeight - document.querySelector('nav').offsetHeight - 20) / height);
+    frame.style.width = width + 'px'; frame.style.height = height + 'px';
+    frame.style.transform = 'scale(' + scale + ')';
+    const stage = document.getElementById('stage');
+    stage.style.width = width * scale + 'px'; stage.style.height = height * scale + 'px';
+    document.querySelectorAll('[data-size]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.size === width + ',' + height)));
+    document.querySelector('output').textContent = width + ' × ' + height + ' · ' + Math.round(scale * 100) + '%';
+    setTimeout(() => {
+      const doc = frame.contentDocument;
+      if (!doc?.querySelector('.mf-shell')) return;
+      const overflow = Math.max(0, doc.documentElement.scrollWidth - width);
+      const outside = [...doc.querySelectorAll('.mf-dock button,.mf-dock input,.mf-np h2')].filter(element => {
+        const rect = element.getBoundingClientRect();
+        return rect.width > 0 && (rect.left < -1 || rect.right > width + 1);
+      }).length;
+      document.querySelector('output').textContent += ' · overflow ' + overflow + 'px · clipped controls ' + outside;
+    }, 350);
+  }
+  document.querySelectorAll('[data-size]').forEach(button => button.addEventListener('click', () => { [width, height] = button.dataset.size.split(',').map(Number); layout(); }));
+  document.getElementById('fallback').addEventListener('click', event => {
+    const enabled = event.target.getAttribute('aria-pressed') !== 'true';
+    event.target.setAttribute('aria-pressed', String(enabled));
+    frame.src = enabled ? '/?renderer=2d' : '/';
+  });
+  frame.addEventListener('load', layout);
+  addEventListener('resize', layout); layout();
+</script>
+</html>

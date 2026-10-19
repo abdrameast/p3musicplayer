@@ -1,0 +1,32 @@
+{
+  "name": "midnight-frequency",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MIDNIGHT FREQUENCY — an unofficial, fan-made Persona 3 inspired music experience.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify:sources": "node tools/verify-sources.mjs"
+  },
+  "dependencies": {
+    "@fontsource/dotgothic16": "^5.3.1",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/michroma": "^5.3.0",
+    "@fontsource/noto-sans-jp": "^5.3.1",
+    "@fontsource/rajdhani": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "jsdom": "^29.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}

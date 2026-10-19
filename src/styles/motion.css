@@ -1,0 +1,14 @@
+@keyframes mf-eq { 0%,100% { height: 3px; } 40% { height: 13px; } 75% { height: 7px; } }
+@keyframes mf-marquee { 0%,14% { transform: translateX(0); } 82%,100% { transform: translateX(-50%); } }
+@keyframes mf-buffer { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+.mf-tracklist__list.is-playing .mf-row.is-active .mf-row__eq i { animation: mf-eq .8s ease-in-out infinite; }
+.mf-tracklist__list.is-playing .mf-row.is-active .mf-row__eq i:nth-child(2) { animation-delay: -.25s; }
+.mf-tracklist__list.is-playing .mf-row.is-active .mf-row__eq i:nth-child(3) { animation-delay: -.5s; }
+.mf-tracklist__list.is-playing .mf-row.is-active .mf-row__eq i:nth-child(4) { animation-delay: -.1s; }
+.mf-fb__marquee.is-scrolling { animation: mf-marquee var(--marquee-s,12s) linear infinite; }
+.mf-play[data-status='buffering'] .mf-play__ring, .mf-timeline.is-buffering .mf-timeline__buffering { animation: mf-buffer 1s ease-in-out infinite; }
+.mf-intro__title { animation: mf-buffer 2s ease-in-out infinite; }
+:root[data-motion='reduced'] *, :root[data-motion='reduced'] *::before, :root[data-motion='reduced'] *::after { animation: none !important; transition-duration: 0ms !important; scroll-behavior: auto !important; }
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion='full']) *, :root:not([data-motion='full']) *::before, :root:not([data-motion='full']) *::after { animation: none !important; transition-duration: 0ms !important; scroll-behavior: auto !important; }
+}
